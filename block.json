@@ -1,0 +1,140 @@
+{
+	"apiVersion": "1",
+	"name": "bpov/block-for-openverse",
+	"title": "Block For Openverse",
+	"description": "Effortlessly incorporate Openverse media content into your WordPress site with this block plugin.",
+	"category": "widgets",
+	"keywords": [
+		"openverse",
+		"audio",
+		"image"
+	],
+	"textdomain": "block-for-openverse",
+	"attributes": {
+		"mediaData": {
+			"type": "array",
+			"default": []
+		},
+		"align": {
+			"type": "string",
+			"default": ""
+		},
+		"cId": {
+			"type": "string",
+			"default": ""
+		},
+		"authInfo": {
+			"type": "object",
+			"default": {
+				"email": ""
+			}
+		},
+		"columns": {
+			"type": "object",
+			"default": {
+				"desktop": 3,
+				"tablet": 2,
+				"mobile": 1
+			}
+		},
+		"columnGap": {
+			"type": "string",
+			"default": "30px"
+		},
+		"rowGap": {
+			"type": "string",
+			"default": "40px"
+		},
+		"items": {
+			"type": "object",
+			"default": {
+				"isTitle": true,
+				"isCreator": true,
+				"isLicenses": true
+			}
+		},
+		"imgBorder": {
+			"type": "object",
+			"default": {
+				"width": "1px",
+				"style": "solid",
+				"color": "#0000",
+				"side": "all",
+				"radius": "3px"
+			}
+		},
+		"titleTypo": {
+			"type": "object",
+			"default": {
+				"fontSize": {
+					"desktop": 16,
+					"tablet": 14,
+					"mobile": 14
+				},
+				"fontWeight": 400,
+				"lineHeight": "135%",
+				"textDecoration": "underline"
+			}
+		},
+		"titleColor": {
+			"type": "string",
+			"default": "#007cba"
+		},
+		"creatorTypo": {
+			"type": "object",
+			"default": {
+				"fontSize": {
+					"desktop": 14,
+					"tablet": 14,
+					"mobile": 14
+				},
+				"fontWeight": 400,
+				"lineHeight": "135%"
+			}
+		},
+		"creatorColor": {
+			"type": "string",
+			"default": "#007cba"
+		},
+		"licensesTypo": {
+			"type": "object",
+			"default": {
+				"fontSize": {
+					"desktop": 14,
+					"tablet": 14,
+					"mobile": 14
+				},
+				"fontWeight": 400,
+				"lineHeight": "135%"
+			}
+		},
+		"licensesColor": {
+			"type": "string",
+			"default": "#007cba"
+		},
+		"audio": {
+			"type": "object",
+			"default": {
+				"leftWidth": "50%"
+			}
+		}
+	},
+	"supports": {
+		"align": [
+			"wide",
+			"full"
+		],
+		"html": false
+	},
+	"example": {
+		"attributes": {
+			"preview": true,
+			"columns": {
+				"desktop": 1,
+				"tablet": 1,
+				"mobile": 1
+			}
+		}
+	},
+	"editorScript": "file:dist/editor.js"
+}
