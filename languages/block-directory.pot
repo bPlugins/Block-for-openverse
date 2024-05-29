@@ -9,88 +9,244 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-04-28T14:52:52+00:00\n"
+"POT-Creation-Date: 2024-05-26T13:20:47+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.6.0\n"
+"X-Generator: WP-CLI 2.10.0\n"
 "X-Domain: block-for-openverse\n"
 
 #. Plugin Name of the plugin
+#: D:\Ampps\www\wordpress\wp-content\plugins\block-for-openverse\block-for-openverse.php
 #: dist/editor.js:1
-#: dist/editor.js:4009
+#: dist/editor.js:4548
 msgid "Block For Openverse"
 msgstr ""
 
 #. Description of the plugin
+#: D:\Ampps\www\wordpress\wp-content\plugins\block-for-openverse\block-for-openverse.php
 msgid "Effortlessly incorporate Openverse media content into your WordPress site with this block plugin."
 msgstr ""
 
 #. Author URI of the plugin
+#: D:\Ampps\www\wordpress\wp-content\plugins\block-for-openverse\block-for-openverse.php
 msgid "https://wpblocks.co"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:4011
+#: dist/editor.js:4550
 msgid "Openverse"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:4012
+#: dist/editor.js:4551
 msgid "Authorization"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:4028
+#: dist/editor.js:4567
 msgid "Remove API"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:4025
+#: dist/editor.js:4564
+#: dist/editor.js:14802
 msgid "Generate API"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:6226
+#: dist/editor.js:13676
+#: dist/editor.js:13733
 msgid "Image"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:6227
+#: dist/editor.js:13677
 msgid "Audio"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:6231
+#: dist/editor.js:13681
 msgid "General"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:6232
+#: dist/editor.js:13682
 msgid "Style"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:6257
-msgid "Token"
+#: dist/editor.js:13708
+msgid "Elements"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:6264
-msgid "Custom Style"
+#: dist/editor.js:13709
+#: dist/editor.js:13737
+msgid "Title"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:7102
+#: dist/editor.js:13711
+#: dist/editor.js:13745
+msgid "Creator"
+msgstr ""
+
+#: dist/editor.js:1
+#: dist/editor.js:13713
+msgid "Licenses Type"
+msgstr ""
+
+#: dist/editor.js:1
+#: dist/editor.js:13716
+msgid "Layout"
+msgstr ""
+
+#: dist/editor.js:1
+#: dist/editor.js:13734
+msgid "Border"
+msgstr ""
+
+#: dist/editor.js:1
+#: dist/editor.js:13739
+#: dist/editor.js:13746
+#: dist/editor.js:13752
+msgid "Typography"
+msgstr ""
+
+#: dist/editor.js:1
+#: dist/editor.js:13741
+#: dist/editor.js:13748
+#: dist/editor.js:13754
+msgid "Color"
+msgstr ""
+
+#: dist/editor.js:1
+#: dist/editor.js:13751
+msgid "Licenses"
+msgstr ""
+
+#: dist/editor.js:1
+#: dist/editor.js:13757
+msgid "Width"
+msgstr ""
+
+#: dist/editor.js:1
+#: dist/editor.js:14031
+msgid "Photograph"
+msgstr ""
+
+#: dist/editor.js:1
+#: dist/editor.js:14031
+msgid "Audiobook"
+msgstr ""
+
+#: dist/editor.js:1
+#: dist/editor.js:14034
+msgid "Illustrations"
+msgstr ""
+
+#: dist/editor.js:1
+#: dist/editor.js:14034
+msgid "Music"
+msgstr ""
+
+#: dist/editor.js:1
+#: dist/editor.js:14037
+msgid "Digitized Artworks"
+msgstr ""
+
+#: dist/editor.js:1
+#: dist/editor.js:14037
+msgid "News"
+msgstr ""
+
+#: dist/editor.js:1
+#: dist/editor.js:14063
+msgid "jpeg"
+msgstr ""
+
+#: dist/editor.js:1
+#: dist/editor.js:14063
+msgid "FLAC"
+msgstr ""
+
+#: dist/editor.js:1
+#: dist/editor.js:14067
+msgid "png"
+msgstr ""
+
+#: dist/editor.js:1
+#: dist/editor.js:14067
+msgid "mid"
+msgstr ""
+
+#: dist/editor.js:1
+#: dist/editor.js:14071
+msgid "gif"
+msgstr ""
+
+#: dist/editor.js:1
+#: dist/editor.js:14071
+msgid "mp3"
+msgstr ""
+
+#: dist/editor.js:1
+#: dist/editor.js:14075
+msgid "svg"
+msgstr ""
+
+#: dist/editor.js:1
+#: dist/editor.js:14075
+msgid "oga"
+msgstr ""
+
+#: dist/editor.js:1
+#: dist/editor.js:14077
+msgid "ogg"
+msgstr ""
+
+#: dist/editor.js:1
+#: dist/editor.js:14078
+msgid "opus"
+msgstr ""
+
+#: dist/editor.js:1
+#: dist/editor.js:14079
+msgid "wav"
+msgstr ""
+
+#: dist/editor.js:1
+#: dist/editor.js:14080
+msgid "webm"
+msgstr ""
+
+#: dist/editor.js:1
+#: dist/editor.js:14308
+msgid "Source"
+msgstr ""
+
+#: dist/editor.js:1
+#: dist/editor.js:14312
+msgid "Freesound"
+msgstr ""
+
+#: dist/editor.js:1
+#: dist/editor.js:14315
+msgid "Jamendo"
+msgstr ""
+
+#: dist/editor.js:1
+#: dist/editor.js:14318
+msgid "Wikimedia Commons"
+msgstr ""
+
+#: dist/editor.js:1
+#: dist/editor.js:14800
 msgid "Email"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:7103
+#: dist/editor.js:14801
 msgid "Name"
-msgstr ""
-
-#: dist/editor.js:1
-#: dist/editor.js:7104
-msgid "Generate"
 msgstr ""
 
 #: block.json

@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { dummyImage, pause, play } from './utils/icons'
 import { licensesTypeFIter } from './utils/functions';
-import Audio from './Audio';
+import MyAudio from './Audio';
 import Image from './Image';
 
 const Layout = ({ attributes, clientId }) => {
@@ -101,14 +101,6 @@ const Layout = ({ attributes, clientId }) => {
         }
     };
 
-    // useEffect(() => {
-    //     // Pause all audio items when component unmounts
-    //     return () => {
-    //         Object.values(audioRefs.current).forEach(audio => {
-    //             audio.pause();
-    //         });
-    //     };
-    // }, []);
 
     useEffect(() => {
         if (Array.isArray(mediaData)) {
@@ -132,7 +124,7 @@ const Layout = ({ attributes, clientId }) => {
             const waves = [];
             return <div className='singleItem' key={index} style={{ overflow: 'hidden' }}>
                 {waveform ?
-                    <Audio items={items} clientId={clientId} item={item} index={index} audioRefs={audioRefs} togglePlay={togglePlay} currentlyPlaying={currentlyPlaying} isPlaying={isPlaying} selectWidthItem={selectWidthItem} playerWidth={playerWidth} calculatedWaves={calculatedWaves} /> :
+                    <MyAudio items={items} clientId={clientId} item={item} index={index} audioRefs={audioRefs} togglePlay={togglePlay} currentlyPlaying={currentlyPlaying} isPlaying={isPlaying} selectWidthItem={selectWidthItem} playerWidth={playerWidth} calculatedWaves={calculatedWaves} /> :
 
                     <Image item={item} items={items} />
                 }

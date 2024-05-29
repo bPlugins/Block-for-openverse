@@ -41,6 +41,7 @@ export const authorization = async (bpOvData, setEmailVeri) => {
 export const searchFilterContent = async (setContent, accessToken, type, licenses, licensesType, category, extension, imageSize, imageRatio, source, searchValue, pageNumber, setSearchLoading) => {
     setSearchLoading(true);
     const searchResult = await getSearchContent(accessToken, type, licenses, licensesType, category, extension, imageSize, imageRatio, source, searchValue, pageNumber);
+    console.log(searchResult);
     setSearchLoading(false);
     setContent(searchResult?.data?.results);
 }
@@ -74,3 +75,13 @@ export const shortenTitle = (title, maxLength) => {
     }
 }
 
+
+export function secondsToMmSs(seconds) {
+    // Ensure the input is a number
+    seconds = parseInt(seconds, 10);
+    // Calculate minutes and remaining seconds
+    let minutes = Math.floor(seconds / 60);
+    let remainingSeconds = seconds % 60;
+    // Format the result as mm:ss
+    return `${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
+}

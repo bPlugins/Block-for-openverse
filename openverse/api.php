@@ -104,7 +104,7 @@ class BPOVAUTHORIZATION
         if ($access_token) {
             return $access_token;
         }
-
+ 
         $data = $this->bpovRegister($email, $name, $unique_id);
 
         if (!isset($data['client_id'])) {
