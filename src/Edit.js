@@ -13,7 +13,7 @@ import Form from './Components/Form';
 import OpenverseFullIcon from './Components/OpenverseFullIcon';
 import useWPOptionQuery from './hooks/useWPOptionQuery';
 import useWPOptionMutation from './hooks/useWPOptionMutation';
-import { authorLoading } from './utils/icons';
+import { authorLoading, loadMore } from './utils/icons';
 const bpovEvent = new CustomEvent('bpovEvent');
 
 const Edit = props => {
@@ -95,6 +95,13 @@ const Edit = props => {
 		}
 	};
 
+	// useEffect(() => {
+	// 	if (data?.is_Authorized === "undefined") {
+	// 		console.log("Undefined Data");
+	// 	}
+
+	// }, []);
+
 	useEffect(() => {
 		if (content) {
 			searchFilterContent(setContent, accessToken, type, licenses, licensesType, categories, extension, imageSize, imageRatio, source, searchValue, 1, setSearchLoading);
@@ -106,24 +113,28 @@ const Edit = props => {
 	}
 
 	// console.log(authInfo);
+
+	console.log(data?.is_Authorized);
+
 	return <>
 		<Settings attributes={attributes} setAttributes={setAttributes} />
 
 		<div className={className} id={`bpovOpenverse-${clientId}`}>
 			<Style attributes={attributes} clientId={clientId} />
+			{data ?
+				<div className=''> {data?.is_Authorized ? <Form {...formProps} /> : <div className="bpovAuthenticate">
+					<OpenverseFullIcon />
+					<div className='bpovnotice'>Provide your Email ID & unique project Name to get access to Openverse using API, these are <span>required field*</span></div>
+					<div className="form">
+						<InputControl label={__('Email', 'block-for-openverse')} value={bpOvData?.email} onChange={(val) => setbpOvData({ ...bpOvData, email: val })} />
+						<InputControl label={__('Name', 'block-for-openverse')} value={bpOvData?.name} onChange={(val) => setbpOvData({ ...bpOvData, name: val })} />
+						<div className={`btn generateBtn `} onClick={onSaveData}>{__('Generate API', 'block-for-openverse')}
+							{loading && <div className='authorLoading'>{authorLoading}</div>}
+						</div>
 
-			{data?.is_Authorized ? <Form {...formProps} /> : <div className="bpovAuthenticate">
-				<OpenverseFullIcon />
-				<div className='bpovnotice'>Provide your Email ID & unique project Name to get access to Openverse using API, these are <span>required field*</span></div>
-				<div className="form">
-					<InputControl label={__('Email', 'block-for-openverse')} value={bpOvData?.email} onChange={(val) => setbpOvData({ ...bpOvData, email: val })} />
-					<InputControl label={__('Name', 'block-for-openverse')} value={bpOvData?.name} onChange={(val) => setbpOvData({ ...bpOvData, name: val })} />
-					<div className={`btn generateBtn `} onClick={onSaveData}>{__('Generate API', 'block-for-openverse')}
-						{loading && <div className='authorLoading'>{authorLoading}</div>}
 					</div>
+				</div>}</div> : <div className='bpovLoading'>{loadMore}</div>}
 
-				</div>
-			</div>}
 		</div>
 	</>;
 };
