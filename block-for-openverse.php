@@ -60,6 +60,16 @@ class BPOVOpenVerse
             'nonce' => wp_create_nonce('wp_rest'),
         ]);
 
+        wp_localize_script('bpov-block-for-openverse-script', 'bpov_getSearchContent', [
+            'ajaxUrl' => admin_url('admin-ajax.php'),
+            'nonce' => wp_create_nonce('wp_rest'),
+        ]);
+
+        wp_localize_script('bpov-block-for-openverse-script', 'bpov_getWave', [
+            'ajaxUrl' => admin_url('admin-ajax.php'),
+            'nonce' => wp_create_nonce('wp_rest'),
+        ]);
+
     }
 
     public function onInit()

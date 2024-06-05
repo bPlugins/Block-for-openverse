@@ -16,10 +16,16 @@ export const Form = ({ attributes, setAttributes, accessToken, getSearchMedia, t
     const handleClick = async () => {
         setPageNumber(prevPageCount => prevPageCount + 1);
         setNextPLoading(true);
-        const searchResult = await getSearchContent(accessToken, type, licenses, licensesType, categories, extension, imageSize, imageRatio, source, searchValue, pageNumber + 1);
 
-        setContent(searchResult?.data?.results);
-        setContent([...content, ...searchResult?.data?.results]);
+        console.log(pageNumber);
+        await fetch(`${bpovSearchData?.ajaxUrl}?action=bpov_getSearchContent&nonce=${bpov_getSearchContent?.nonce}&accessToken=${accessToken}&type=${type}&licenses=${licenses}&licensesType=${licensesType}&category=${categories}&extension=${extension}&imageSize=${imageSize}&imageRatio=${imageRatio}&source=${source}&searchValue=${searchValue}&pageNumber=${pageNumber + 1}`).then(res => res.json()).then(async (data) => {
+            setContent(data?.data?.results);
+            setContent([...content, ...data?.data?.results]);
+        });
+
+        // const searchResult = await getSearchContent(accessToken, type, licenses, licensesType, categories, extension, imageSize, imageRatio, source, searchValue, pageNumber + 1);
+        // setContent(searchResult?.data?.results);
+        // setContent([...content, ...searchResult?.data?.results]);
         setNextPLoading(false);
     };
 

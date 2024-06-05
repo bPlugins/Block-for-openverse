@@ -5,7 +5,6 @@ import ImgEle from './Components/Elements/ImgEle';
 
 const Audio = ({ clientId, item, index, audioRefs, togglePlay, currentlyPlaying, isPlaying, selectWidthItem, playerWidth, calculatedWaves, items }) => {
     const { thumbnail, id, title, creator, category, license, url } = item || {};
-
     const rightRef = useRef();
 
     useEffect(() => {
@@ -45,7 +44,6 @@ const Audio = ({ clientId, item, index, audioRefs, togglePlay, currentlyPlaying,
                     progressTimestamp.style.left = (currentWidth) + 'px'
                 } else {
                     progressTimestamp.style.left = (currentWidth - 35) + 'px'
-
                 }
             })
 
@@ -60,15 +58,15 @@ const Audio = ({ clientId, item, index, audioRefs, togglePlay, currentlyPlaying,
             // set wave color to black when mouse hover on the wave
             rightRef.current?.querySelector('.wave')?.addEventListener('mouseover', function (e) {
                 const rects = svgWave.querySelectorAll('rect');
-                const maxRectsToBeCollored = rects.length / playerWidth * e.offsetX;
+                const maxRectsToBeCollored = Math.floor(rects.length / playerWidth * e.offsetX);
                 rects.forEach((rect, index) => {
-                    if (index <= maxRectsToBeCollored) {
+                    if (index < maxRectsToBeCollored) {
                         rect.classList.add('fill-black')
                     } else {
                         rect.classList.remove('fill-black');
                     }
                 })
-                console.log(rects.length / playerWidth * e.offsetX)
+                // console.log(rects.length / playerWidth * e.offsetX)
                 shouldUpdate = false;
             })
 
@@ -80,20 +78,17 @@ const Audio = ({ clientId, item, index, audioRefs, togglePlay, currentlyPlaying,
                 })
 
                 const currentWidth = (playerWidth / audio.duration) * audio.currentTime
-
-                const maxRectsToBeCollored = rects.length / playerWidth * currentWidth;
-
+                const maxRectsToBeCollored = Math.floor(rects.length / playerWidth * currentWidth);
+                // console.log({ maxRectsToBeCollored })
                 rects.forEach((rect, index) => {
-                    if (index <= maxRectsToBeCollored) {
+                    if (index < maxRectsToBeCollored) {
                         rect.classList.add('fill-black')
                     } else {
                         rect.classList.remove('fill-black');
                     }
                 })
                 shouldUpdate = true;
-
             })
-
         }
     }, [playerWidth])
 
@@ -121,10 +116,10 @@ const Audio = ({ clientId, item, index, audioRefs, togglePlay, currentlyPlaying,
                 {/* <button >{isPlaying ? 'Pause' : 'Play'}</button> */}
             </div>
             <div className="wave relative" ref={selectWidthItem} style={{ overflow: 'hidden' }}>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox={`0 0 ${playerWidth} 64`} preserveAspectRatio="none" className="absolute inset-0 h-full svg-current-position" data-v-6984d82a="">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox={`0 0 ${playerWidth || 500} 64`} preserveAspectRatio="none" className="absolute inset-0 h-full svg-current-position" data-v-6984d82a="">
                     <rect x="0" y="0" width="0" height="100%" className="fill-yellow" data-v-6984d82a=""></rect>
                 </svg>
-                <svg className='absolute svg-wave bottom-0' xmlns="http://www.w3.org/2000/svg" width={playerWidth} height="44" viewBox={`0 0 ${playerWidth} 44`}>
+                <svg className='absolute svg-wave bottom-0' xmlns="http://www.w3.org/2000/svg" width={playerWidth} height="44" viewBox={`0 0 ${playerWidth || 500} 44`}>
                     {calculatedWaves?.find(wave => item.id === wave.id)?.points.map((item, i) => <rect className='origin-bottom transform transition-transform duration-500 scale-y-100 fill-dark-charcoal-20-alpha' key={i} x={i * 4} y={44 - (item * 44)} width="2" height={item * 44} />)}
                 </svg>
                 <div className="progress timestamp z-10 transform bg-yellow -translate-x-full">

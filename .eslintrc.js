@@ -19,6 +19,8 @@ module.exports = {
 		'jQuery': 'readonly',
 		'bpovToken': 'readonly',
 		'bpovSearchData': 'readonly',
+		'bpov_getSearchContent': 'readonly',
+		'bpov_getWave': 'readonly',
 	},
 	'parserOptions': {
 		'ecmaFeatures': {

@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-06-02T05:08:38+00:00\n"
+"POT-Creation-Date: 2024-06-04T05:50:22+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.10.0\n"
 "X-Domain: block-for-openverse\n"
@@ -17,7 +17,7 @@ msgstr ""
 #. Plugin Name of the plugin
 #: D:\Ampps\www\wordpress\wp-content\plugins\block-for-openverse\block-for-openverse.php
 #: dist/editor.js:1
-#: dist/editor.js:4558
+#: dist/editor.js:698
 msgid "Block For Openverse"
 msgstr ""
 
@@ -32,220 +32,220 @@ msgid "https://wpblocks.co"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:4560
+#: dist/editor.js:700
 msgid "Openverse"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:4561
+#: dist/editor.js:701
 msgid "Authorization"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:4577
+#: dist/editor.js:717
 msgid "Remove API"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:4574
-#: dist/editor.js:14914
+#: dist/editor.js:714
+#: dist/editor.js:11078
 msgid "Generate API"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:13686
-#: dist/editor.js:13743
+#: dist/editor.js:9826
+#: dist/editor.js:9883
 msgid "Image"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:13687
+#: dist/editor.js:9827
 msgid "Audio"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:13691
+#: dist/editor.js:9831
 msgid "General"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:13692
+#: dist/editor.js:9832
 msgid "Style"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:13718
+#: dist/editor.js:9858
 msgid "Elements"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:13719
-#: dist/editor.js:13747
+#: dist/editor.js:9859
+#: dist/editor.js:9887
 msgid "Title"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:13721
-#: dist/editor.js:13755
+#: dist/editor.js:9861
+#: dist/editor.js:9895
 msgid "Creator"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:13723
+#: dist/editor.js:9863
 msgid "Licenses Type"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:13726
+#: dist/editor.js:9866
 msgid "Layout"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:13744
+#: dist/editor.js:9884
 msgid "Border"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:13749
-#: dist/editor.js:13756
-#: dist/editor.js:13762
+#: dist/editor.js:9889
+#: dist/editor.js:9896
+#: dist/editor.js:9902
 msgid "Typography"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:13751
-#: dist/editor.js:13758
-#: dist/editor.js:13764
+#: dist/editor.js:9891
+#: dist/editor.js:9898
+#: dist/editor.js:9904
 msgid "Color"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:13761
+#: dist/editor.js:9901
 msgid "Licenses"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:13767
+#: dist/editor.js:9907
 msgid "Width"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:14041
+#: dist/editor.js:10181
 msgid "Photograph"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:14041
+#: dist/editor.js:10181
 msgid "Audiobook"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:14044
+#: dist/editor.js:10184
 msgid "Illustrations"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:14044
+#: dist/editor.js:10184
 msgid "Music"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:14047
+#: dist/editor.js:10187
 msgid "Digitized Artworks"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:14047
+#: dist/editor.js:10187
 msgid "News"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:14073
+#: dist/editor.js:10213
 msgid "jpeg"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:14073
+#: dist/editor.js:10213
 msgid "FLAC"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:14077
+#: dist/editor.js:10217
 msgid "png"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:14077
+#: dist/editor.js:10217
 msgid "mid"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:14081
+#: dist/editor.js:10221
 msgid "gif"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:14081
+#: dist/editor.js:10221
 msgid "mp3"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:14085
+#: dist/editor.js:10225
 msgid "svg"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:14085
+#: dist/editor.js:10225
 msgid "oga"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:14087
+#: dist/editor.js:10227
 msgid "ogg"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:14088
+#: dist/editor.js:10228
 msgid "opus"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:14089
+#: dist/editor.js:10229
 msgid "wav"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:14090
+#: dist/editor.js:10230
 msgid "webm"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:14318
+#: dist/editor.js:10458
 msgid "Source"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:14322
+#: dist/editor.js:10462
 msgid "Freesound"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:14325
+#: dist/editor.js:10465
 msgid "Jamendo"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:14328
+#: dist/editor.js:10468
 msgid "Wikimedia Commons"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:14912
+#: dist/editor.js:11076
 msgid "Email"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:14913
+#: dist/editor.js:11077
 msgid "Name"
 msgstr ""
 

@@ -15,10 +15,23 @@ const Layout = ({ attributes, clientId }) => {
     const [playerWidth, setPlayerWidth] = useState(null);
 
     const fetchWaves = async (id) => {
-        const response = await fetch(`https://api.openverse.engineering/v1/audio/${id}/waveform/`)
-        const data = await response.json();
-        return data.points;
-    }
+        const response = await fetch(`${bpovSearchData?.ajaxUrl}?action=bpov_getWave&nonce=${bpov_getWave?.nonce}&id=${id}`);
+        const res = await response.json();
+        if (res.success) {
+            console.log('points', res.data?.points);
+            return res.data?.points;
+        } else {
+            console.error('Error:', res.data);
+            return null;
+        }
+
+        // const response = await fetch(`https://api.openverse.engineering/v1/audio/${id}/waveform/`)
+        // const data = await response.json();
+        // return data.points;
+    };
+
+    console.log({ waves })
+
 
     useEffect(() => {
         const getWaves = async () => {
@@ -30,14 +43,16 @@ const Layout = ({ attributes, clientId }) => {
                             // console.log(item.id)
                             if (!waves.find(wave => wave.id == item.id)) {
                                 const points = await fetchWaves(item.id);
+
+                                console.log(points);
                                 // console.log({ id: item.id, points, waves });
                                 // tempWaves = [...tempWaves, { id: item.id, points: points }]
                                 tempWaves = [...tempWaves, { id: item.id, points: points }]
+                                if (i === mediaData.length - 1) {
+                                    // console.log({ tempWaves, i })
+                                    resolve(tempWaves);
+                                }
                             }
-                        }
-                        if (i === mediaData.length - 1) {
-                            // console.log({ tempWaves, i })
-                            resolve(tempWaves);
                         }
                     });
                     // console.log({ tempWaves })
@@ -78,8 +93,10 @@ const Layout = ({ attributes, clientId }) => {
     }, [waves, playerWidth]);
 
     useEffect(() => {
-        setPlayerWidth(selectWidthItem.current?.offsetWidth)
+
+        setPlayerWidth(selectWidthItem?.current?.offsetWidth);
         window.div = selectWidthItem.current;
+
     }, [columns, audio]);
 
     const togglePlay = (id) => {
@@ -107,9 +124,7 @@ const Layout = ({ attributes, clientId }) => {
             // Create a new object to hold audio refs for each item
             const refs = {};
             mediaData.forEach(item => {
-                // Create a new audio element
                 const audio = new Audio(item.url);
-                // Store the reference to the audio element in the refs object
                 refs[item.id] = audio;
             });
             // Update the audioRefs with the new object containing audio refs

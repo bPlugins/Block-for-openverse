@@ -8,7 +8,7 @@ import { tabController } from '../../Components/utils/functions';
 
 import Settings from './Settings';
 import Style from './Style';
-import { searchFilterContent, authorization, getData, getSearchContent } from './utils/functions';
+import { searchFilterContent, authorization } from './utils/functions';
 import Form from './Components/Form';
 import OpenverseFullIcon from './Components/OpenverseFullIcon';
 import useWPOptionQuery from './hooks/useWPOptionQuery';
@@ -85,6 +85,7 @@ const Edit = props => {
 				await fetch(`${bpovSearchData?.ajaxUrl}?action=bpov_searchData&nonce=${bpovSearchData?.nonce}&email=${bpOvData?.email}`).then(res => res.json()).then(async (data) => {
 					const accessToken = data?.data?.accessToken;
 					setAccessToken(accessToken);
+
 					searchFilterContent(setContent, accessToken, type, licenses, licensesType, categories, extension, imageSize, imageRatio, source, searchValue, 1, setSearchLoading);
 					setModal(true);
 				});

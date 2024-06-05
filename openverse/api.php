@@ -10,7 +10,96 @@ class BPOVAUTHORIZATION
         add_action('wp_ajax_bpov_searchData', [$this, 'bpov_searchData']);
         add_action('wp_ajax_nopriv_bpov_searchData', [$this, 'bpov_searchData']);
 
+        add_action('wp_ajax_bpov_getSearchContent', [$this, 'bpov_getSearchContent']);
+        add_action('wp_ajax_nopriv_bpov_getSearchContent', [$this, 'bpov_getSearchContent']);
+
+        add_action('wp_ajax_bpov_getWave', [$this, 'bpov_getWave']);
+        add_action('wp_ajax_nopriv_bpov_getWave', [$this, 'bpov_getWave']);
+
     }
+
+    public function bpov_getWave() {
+        if (!wp_verify_nonce(sanitize_text_field($_GET['nonce']), 'wp_rest')) {
+            wp_die('Invalid nonce');
+        }
+    
+        $id = sanitize_text_field($_GET['id']) ?? false;
+        if (!$id) {
+            wp_send_json_error('Missing ID parameter');
+        }
+    
+        $url = "https://api.openverse.engineering/v1/audio/$id/waveform/";
+    
+        $response = wp_remote_get($url);
+    
+        if (is_wp_error($response)) {
+            wp_send_json_error($response->get_error_message());
+        }
+    
+        $body = wp_remote_retrieve_body($response);
+        $data = json_decode($body, true);
+    
+        if (json_last_error() !== JSON_ERROR_NONE) {
+            wp_send_json_error('Error decoding JSON response');
+        }
+    
+        wp_send_json_success($data);
+    }
+    
+
+    public function bpov_getSearchContent() {
+
+        if (!wp_verify_nonce(sanitize_text_field($_GET['nonce']), 'wp_rest')) {
+            wp_die();
+        }
+    
+        $access_token = sanitize_text_field($_GET['accessToken']) ?? false;
+        $type = sanitize_text_field($_GET['type']) ?? false;
+        $searchValue = sanitize_text_field($_GET['searchValue']) ?? false;
+        $pageCount = sanitize_text_field($_GET['pageNumber']) ?? false;
+        $licenses = sanitize_text_field($_GET['licenses']) ?? false;
+        $licensesType = sanitize_text_field($_GET['licensesType']) ?? false;
+        $category = sanitize_text_field($_GET['category']) ?? false;
+        $extension = sanitize_text_field($_GET['extension']) ?? false;
+        $imageSize = sanitize_text_field($_GET['imageSize']) ?? false;
+        $imageRatio = sanitize_text_field($_GET['imageRatio']) ?? false;
+        $source = sanitize_text_field($_GET['source']) ?? false;
+    
+        if (!$access_token) {
+            wp_send_json_error('Access Token reqired');
+            wp_die();
+        }
+    
+        $url = "https://api.openverse.engineering/v1/$type/?q=$searchValue&page=$pageCount&license=$licenses&license_type=$licensesType&category=$category&extension=$extension&size=$imageSize&aspect_ratio=$imageRatio&source=$source";
+    
+        $args = [
+            'headers' => [
+                'Authorization' => "Bearer $access_token",
+            ],
+        ];
+    
+        try {
+            $response = wp_remote_get($url, $args);
+    
+            if (is_wp_error($response)) {
+                wp_send_json_error($response->get_error_message());
+            } else {
+                $body = wp_remote_retrieve_body($response);
+                $data = json_decode($body, true);
+    
+                if (json_last_error() === JSON_ERROR_NONE) {
+                    wp_send_json_success($data);
+                } else {
+                    wp_send_json_error('Error decoding JSON response.');
+                }
+            }
+        } catch (Exception $e) {
+            wp_send_json_error($e->getMessage());
+        }
+    
+        wp_die();
+    }
+    
 
     public function bpov_GetData()
     {

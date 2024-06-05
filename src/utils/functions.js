@@ -13,11 +13,9 @@ export const getSearchContent = async (access_token, type, licenses, licensesTyp
         const response = await axios.get(url, {}, {
             headers,
         })
-
         return response;
     } catch (error) {
         console.error('Error:', error);
-
         return false;
     }
 }
@@ -39,11 +37,24 @@ export const authorization = async (bpOvData, setEmailVeri) => {
 }
 
 export const searchFilterContent = async (setContent, accessToken, type, licenses, licensesType, category, extension, imageSize, imageRatio, source, searchValue, pageNumber, setSearchLoading) => {
+    console.log(pageNumber);
     setSearchLoading(true);
-    const searchResult = await getSearchContent(accessToken, type, licenses, licensesType, category, extension, imageSize, imageRatio, source, searchValue, pageNumber);
-    console.log(searchResult);
-    setSearchLoading(false);
-    setContent(searchResult?.data?.results);
+    try {
+        await fetch(`${bpovSearchData?.ajaxUrl}?action=bpov_getSearchContent&nonce=${bpov_getSearchContent?.nonce}&accessToken=${accessToken}&type=${type}&licenses=${licenses}&licensesType=${licensesType}&category=${category}&extension=${extension}&imageSize=${imageSize}&imageRatio=${imageRatio}&source=${source}&searchValue=${searchValue}&pageNumber=${pageNumber}`).then(res => res.json()).then(async (data) => {
+
+            setContent(data?.data?.results);
+            setSearchLoading(false);
+        });
+    } catch (error) {
+        console.error('Error:', error);
+        setSearchLoading(false);
+    }
+
+    // setSearchLoading(true);
+    // const searchResult = await getSearchContent(accessToken, type, licenses, licensesType, category, extension, imageSize, imageRatio, source, searchValue, pageNumber);
+
+    // setSearchLoading(false);
+    // setContent(searchResult?.data?.results);
 }
 
 export const licensesTypeFIter = (type, layoutCheck) => {
