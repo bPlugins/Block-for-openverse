@@ -30,7 +30,7 @@ export const Form = ({ attributes, setAttributes, accessToken, getSearchMedia, t
     };
 
     const modalProps = {
-        content, pageNumber, setAttributes, mediaData, modal, setModal, handleClick, getSearchMedia, searchValue, setSearchValue, type, setType, setLicenses, licenses, licensesType, setLicensesType, categories, setCategories, extension, setExtension, imageSize, setImageSize, imageRatio, setImageRatio, source, setSource, loading, nextPLoading
+        content, pageNumber, attributes, setAttributes, mediaData, modal, setModal, handleClick, getSearchMedia, searchValue, setSearchValue, type, setType, setLicenses, licenses, licensesType, setLicensesType, categories, setCategories, extension, setExtension, imageSize, setImageSize, imageRatio, setImageRatio, source, setSource, loading, nextPLoading
     }
 
     return <> <div className='searchForm'>

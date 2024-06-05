@@ -14,12 +14,13 @@ const Layout = ({ attributes, clientId }) => {
     const [calculatedWaves, setCalculatedWaves] = useState([]);
     const [playerWidth, setPlayerWidth] = useState(null);
 
-    const fetchWaves = async (id) => {
-        const response = await fetch(`${bpovSearchData?.ajaxUrl}?action=bpov_getWave&nonce=${bpov_getWave?.nonce}&id=${id}`);
+    const fetchWaves = async (missingWaves) => {
+        // console.log(`${bpovSearchData?.ajaxUrl}?action=bpov_getWave&nonce=${bpov_getWave?.nonce}&missingWaves=${JSON.stringify(missingWaves)}`)
+        const response = await fetch(`${bpovSearchData?.ajaxUrl}?action=bpov_getWave&nonce=${bpov_getWave?.nonce}&missingWaves=${JSON.stringify(missingWaves)}`);
         const res = await response.json();
+        console.log(res)
         if (res.success) {
-            console.log('points', res.data?.points);
-            return res.data?.points;
+            return res.data;
         } else {
             console.error('Error:', res.data);
             return null;
@@ -30,35 +31,38 @@ const Layout = ({ attributes, clientId }) => {
         // return data.points;
     };
 
-    console.log({ waves })
+
 
 
     useEffect(() => {
         const getWaves = async () => {
+            const missingWaves = [];
             if (Array.isArray(mediaData)) {
-                const myPromise = new Promise((resolve, reject) => {
-                    let tempWaves = [];
-                    mediaData.map(async (item, i) => {
-                        if (item.waveform) {
-                            // console.log(item.id)
-                            if (!waves.find(wave => wave.id == item.id)) {
-                                const points = await fetchWaves(item.id);
+                mediaData.map((item, i) => {
+                    if (item.waveform) {
+                        // console.log(item.id)
+                        if (!waves.find(wave => wave.id == item.id)) {
+                            missingWaves.push(item.id)
+                            // const points = await fetchWaves(item.id);
 
-                                console.log(points);
-                                // console.log({ id: item.id, points, waves });
-                                // tempWaves = [...tempWaves, { id: item.id, points: points }]
-                                tempWaves = [...tempWaves, { id: item.id, points: points }]
-                                if (i === mediaData.length - 1) {
-                                    // console.log({ tempWaves, i })
-                                    resolve(tempWaves);
-                                }
-                            }
+                            // tempWaves = [...tempWaves, { id: item.id, points: points }]
+                            // if (i === mediaData.length - 1) {
+                            //     resolve(tempWaves);
+                            // }
                         }
-                    });
-                    // console.log({ tempWaves })
-                    // resolve(tempWaves);
+                    }
                 });
-                setWaves(await myPromise)
+                // const myPromise = new Promise((resolve, reject) => {
+                //     let tempWaves = [];
+                //     console.log({ missingWaves })
+                //     // console.log({ tempWaves })
+                // });
+                if (missingWaves.length > 0) {
+                    const response = await fetchWaves(missingWaves);
+                    console.log('missingWaves', response)
+                    setWaves(response)
+                }
+                // resolve(response);
             }
         }
 

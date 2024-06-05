@@ -113,10 +113,6 @@ const Edit = props => {
 		attributes, setAttributes, getSearchMedia, type, setType, searchValue, setSearchValue, content, setContent, setPageNumber, pageNumber, accessToken, emailVeri, modal, setModal, setLicenses, licenses, licensesType, setLicensesType, categories, setCategories, extension, setExtension, imageSize, setImageSize, imageRatio, setImageRatio, source, setSource, loading, setSearchLoading,
 	}
 
-	// console.log(authInfo);
-
-	console.log(data?.is_Authorized);
-
 	return <>
 		<Settings attributes={attributes} setAttributes={setAttributes} />
 

@@ -24,25 +24,63 @@ class BPOVAUTHORIZATION
         }
     
         $id = sanitize_text_field($_GET['id']) ?? false;
-        if (!$id) {
-            wp_send_json_error('Missing ID parameter');
+
+        $resquestedWaves = json_decode( stripslashes( sanitize_text_field($_GET['missingWaves'])), true);
+        $storedWaves = get_option('bpov_waves', []);
+        $respondedWaves = [];
+        $missingWaves = [];
+
+        $storedWavesKeys = array_keys($storedWaves);
+
+        foreach($resquestedWaves as $id){
+            if(!in_array($id, $storedWavesKeys)){
+                $missingWaves[] = $id;
+            }
         }
+
+        // wp_send_json_success($missingWaves);
+
+        $i = 0;
+
+        foreach($missingWaves as $key => $id){
+            $i++;
+            try {
+                $response = wp_remote_get("https://api.openverse.engineering/v1/audio/$id/waveform/");
     
-        $url = "https://api.openverse.engineering/v1/audio/$id/waveform/";
-    
-        $response = wp_remote_get($url);
+                if (is_wp_error($response)) {
+                    wp_send_json_error($response->get_error_message());
+                }
+            
+                $body = json_decode(wp_remote_retrieve_body($response), true);
+                $respondedWaves[] = [
+                    'id' => $id,
+                    'points' => $body['points'],
+                ];
+            } catch (\Throwable $th) {
+                throw $th;
+            }
+        }
+
+        $response = array_merge( $respondedWaves,$storedWaves);
+
+        update_option('bpov_waves', $response);
+
+        wp_send_json_success( $response);
+
     
         if (is_wp_error($response)) {
             wp_send_json_error($response->get_error_message());
         }
     
+        $response = wp_remote_get($url);
+
         $body = wp_remote_retrieve_body($response);
         $data = json_decode($body, true);
     
         if (json_last_error() !== JSON_ERROR_NONE) {
             wp_send_json_error('Error decoding JSON response');
         }
-    
+     
         wp_send_json_success($data);
     }
     
