@@ -16,7 +16,7 @@ const Layout = ({ attributes, clientId }) => {
 
     const fetchWaves = async (missingWaves) => {
         // console.log(`${bpovSearchData?.ajaxUrl}?action=bpov_getWave&nonce=${bpov_getWave?.nonce}&missingWaves=${JSON.stringify(missingWaves)}`)
-        const response = await fetch(`${bpovSearchData?.ajaxUrl}?action=bpov_getWave&nonce=${bpov_getWave?.nonce}&missingWaves=${JSON.stringify(missingWaves)}`);
+        const response = await fetch(`${bpovSearchData?.ajaxUrl}?action=bpov_getWave&nonce=${bpov_getWave?.nonce}&clientId=${clientId}&missingWaves=${JSON.stringify(missingWaves)}`);
         const res = await response.json();
         console.log(res)
         if (res.success) {
@@ -31,12 +31,10 @@ const Layout = ({ attributes, clientId }) => {
         // return data.points;
     };
 
-
-
-
     useEffect(() => {
         const getWaves = async () => {
             const missingWaves = [];
+            console.log(missingWaves);
             if (Array.isArray(mediaData)) {
                 mediaData.map((item, i) => {
                     if (item.waveform) {
@@ -59,7 +57,7 @@ const Layout = ({ attributes, clientId }) => {
                 // });
                 if (missingWaves.length > 0) {
                     const response = await fetchWaves(missingWaves);
-                    console.log('missingWaves', response)
+                    // console.log('missingWaves', response);
                     setWaves(response)
                 }
                 // resolve(response);

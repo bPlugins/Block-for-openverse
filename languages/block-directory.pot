@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-06-04T05:50:22+00:00\n"
+"POT-Creation-Date: 2024-06-06T05:10:03+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.10.0\n"
 "X-Domain: block-for-openverse\n"
@@ -48,7 +48,7 @@ msgstr ""
 
 #: dist/editor.js:1
 #: dist/editor.js:714
-#: dist/editor.js:11078
+#: dist/editor.js:11070
 msgid "Generate API"
 msgstr ""
 
@@ -240,12 +240,12 @@ msgid "Wikimedia Commons"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:11076
+#: dist/editor.js:11068
 msgid "Email"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:11077
+#: dist/editor.js:11069
 msgid "Name"
 msgstr ""
 

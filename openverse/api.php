@@ -22,11 +22,10 @@ class BPOVAUTHORIZATION
         if (!wp_verify_nonce(sanitize_text_field($_GET['nonce']), 'wp_rest')) {
             wp_die('Invalid nonce');
         }
-    
-        $id = sanitize_text_field($_GET['id']) ?? false;
 
+        $clientId = sanitize_text_field($_GET['clientId']) ?? false;
         $resquestedWaves = json_decode( stripslashes( sanitize_text_field($_GET['missingWaves'])), true);
-        $storedWaves = get_option('bpov_waves', []);
+        $storedWaves = get_option("bpov_waves_$clientId", []);
         $respondedWaves = [];
         $missingWaves = [];
 
@@ -63,25 +62,25 @@ class BPOVAUTHORIZATION
 
         $response = array_merge( $respondedWaves,$storedWaves);
 
-        update_option('bpov_waves', $response);
+        update_option("bpov_waves_$clientId", $response);
 
-        wp_send_json_success( $response);
+        wp_send_json_success( $response );
 
     
-        if (is_wp_error($response)) {
-            wp_send_json_error($response->get_error_message());
-        }
+        // if (is_wp_error($response)) {
+        //     wp_send_json_error($response->get_error_message());
+        // }
     
-        $response = wp_remote_get($url);
+        // $response = wp_remote_get($url);
 
-        $body = wp_remote_retrieve_body($response);
-        $data = json_decode($body, true);
+        // $body = wp_remote_retrieve_body($response);
+        // $data = json_decode($body, true);
     
-        if (json_last_error() !== JSON_ERROR_NONE) {
-            wp_send_json_error('Error decoding JSON response');
-        }
+        // if (json_last_error() !== JSON_ERROR_NONE) {
+        //     wp_send_json_error('Error decoding JSON response');
+        // }
      
-        wp_send_json_success($data);
+        // wp_send_json_success($data);
     }
     
 
