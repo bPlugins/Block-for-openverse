@@ -4,8 +4,10 @@ import { licensesTypeFIter, secondsToMmSs, shortenTitle } from './utils/function
 import ImgEle from './Components/Elements/ImgEle';
 
 const Audio = ({ clientId, item, index, audioRefs, togglePlay, currentlyPlaying, isPlaying, selectWidthItem, playerWidth, calculatedWaves, items }) => {
-    const { thumbnail, id, title, creator, category, license, url } = item || {};
+    const { thumbnail, id, title, creator, category, license, url, titleHyperLink, imageHyperLink } = item || {};
     const rightRef = useRef();
+
+    console.log(titleHyperLink);
 
     useEffect(() => {
         if (playerWidth) {
@@ -94,8 +96,8 @@ const Audio = ({ clientId, item, index, audioRefs, togglePlay, currentlyPlaying,
 
     return <div className='audio'>
         <div className="left">
-            <ImgEle url={thumbnail} />
-            <a href={`https://openverse.org/audio/${id}`}>
+            <ImgEle url={thumbnail} imageHyperLink={imageHyperLink} />
+            <a href={titleHyperLink ? titleHyperLink : `https://openverse.org/audio/${id}`}>
                 {items?.isTitle && <div className="title">{shortenTitle(title, 10)}</div>}
                 {items?.isCreator && <div className="creator"><span>by</span> {shortenTitle(creator, 20)}</div>}
 

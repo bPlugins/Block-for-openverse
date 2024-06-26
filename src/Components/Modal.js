@@ -9,7 +9,7 @@ import { licensesTypeFIter } from '../utils/functions';
 const Modal = ({ content, pageNumber, setAttributes, mediaData, handleClick, modal, setModal, getSearchMedia, searchValue, setSearchValue, type, setType, setLicenses, licenses, licensesType, setLicensesType, categories, setCategories, extension, setExtension, imageSize, setImageSize, imageRatio, setImageRatio, source, setSource, loading, nextPLoading }) => {
 
     const selectItem = (item) => {
-        setAttributes({ mediaData: [...mediaData, item] });
+        setAttributes({ mediaData: [...mediaData, { ...item, imageHyperLink: '', titleHyperLink: '', }] });
     }
 
     const removeItem = (id) => {
